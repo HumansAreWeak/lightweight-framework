@@ -1,0 +1,9 @@
+# Gitignore
+
+# Folders
+src/
+
+# Files
+.env
+tsconfig.json
+webpack.config.js
