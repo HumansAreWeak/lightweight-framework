@@ -1,11 +1,14 @@
 {
     "name": "lightweight-framework",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "An ultra lightweight framework based on express",
     "main": "./dist/framework.bundle.js",
     "repository": "https://github.com/HumansAreWeak/lightweight-framework",
     "author": "Maik Steiger",
     "license": "MIT",
+    "scripts": {
+        "dev": "npx webpack --watch"
+    },
     "devDependencies": {
         "@types/node": "^13.11.1",
         "dotenv": "^8.2.0",
