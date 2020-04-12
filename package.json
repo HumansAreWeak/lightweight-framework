@@ -1,6 +1,6 @@
 {
     "name": "@humansareweak/lightweight-framework",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "An ultra lightweight Framework based on Express.JS",
     "main": "./dist/index.js",
     "bin": {
