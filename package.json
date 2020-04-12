@@ -1,8 +1,8 @@
 {
     "name": "lightweight-framework",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "An ultra lightweight framework based on express",
-    "main": "./dist/index.js",
+    "main": "./dist/framework.bundle.js",
     "repository": "https://github.com/HumansAreWeak/lightweight-framework",
     "author": "Maik Steiger",
     "license": "MIT",
