@@ -1,8 +1,9 @@
 {
     "name": "@humansareweak/lightweight-framework",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "An ultra lightweight Framework based on Express.JS",
     "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "bin": {
         "@humansareweak/lwf": "./bin/lwf",
         "lwf": "./bin/lwf"
@@ -26,13 +27,17 @@
         "@types/node": "^13.11.1",
         "dotenv": "^8.2.0",
         "esm": "^3.2.25",
-        "typescript": "^3.8.3"
+        "typescript": "^3.8.3",
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11"
     },
     "dependencies": {
         "arg": "^4.1.3",
         "chalk": "^4.0.0",
+        "cors": "^2.8.5",
         "express": "^4.17.1",
         "inquirer": "^7.1.0",
+        "internal-ip": "^6.0.0",
         "nodemon": "^2.0.3",
         "shelljs": "^0.8.3"
     }
