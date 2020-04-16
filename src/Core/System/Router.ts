@@ -1,4 +1,4 @@
-import { Application } from "express";
+import { Application, NextFunction } from "express";
 const Express = require("express");
 
 class Router {
@@ -9,24 +9,44 @@ class Router {
         this.app = app;
     }
 
+    /**
+     * GET Request to a specified URL. Will response with corresponding Controller.
+     * @param path
+     * @param controller
+     * @returns void
+     */
     public get(path: string, controller: string) {
         let details: Array<string> = this.createDetails(controller);
 
         this.app.get(
             path,
-            (req: Express.Request, res: Express.Response, err: any) => {
-                this.createInstance(details, req, res, err);
+            (
+                req: Express.Request,
+                res: Express.Response,
+                next: NextFunction
+            ) => {
+                this.createInstance(details, req, res, next);
             }
         );
     }
 
+    /**
+     * POST Request to a specified URL. Will response with corresponding Controller.
+     * @param path
+     * @param controller
+     * @returns void
+     */
     public post(path: string, controller: string) {
         let details: Array<string> = this.createDetails(controller);
 
         this.app.post(
             path,
-            (req: Express.Request, res: Express.Response, err: any) => {
-                this.createInstance(details, req, res, err);
+            (
+                req: Express.Request,
+                res: Express.Response,
+                next: NextFunction
+            ) => {
+                this.createInstance(details, req, res, next);
             }
         );
     }
@@ -35,14 +55,14 @@ class Router {
         details: Array<string>,
         req: Express.Request,
         res: Express.Response,
-        err: any
+        next: NextFunction
     ) {
         eval(`
-    const Controller = new require("${Router.path}/App/Http/Controllers/${details[0]}");
-    Controller.prototype.req = req;
-    Controller.prototype.res = res;
-    Controller.prototype.err = err;
-    Controller.prototype.${details[1]}();
+        const Controller = new require("${Router.path}/App/Http/Controllers/${details[0]}");
+        Controller.prototype.req = req;
+        Controller.prototype.res = res;
+        Controller.prototype.next = next;
+        Controller.prototype.${details[1]}();
     `);
     }
 

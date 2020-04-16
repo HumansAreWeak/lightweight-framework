@@ -116,14 +116,14 @@ export function main(args: any): void {
 
         createFile(
             "./src/Web/Routes.js",
-            'const Router = require("lightweight-framework").Router;' +
+            'const Router = require("@humansareweak/lightweight-framework").Router;' +
                 "\n\n" +
                 'Router.get("/", "ExampleController@index");\n'
         );
 
         createFile(
             "./src/App/Http/Controllers/ExampleController.js",
-            'const Controller = require("lightweight-framework").Controller;' +
+            'const Controller = require("@humansareweak/lightweight-framework").Controller;' +
                 "\n\n" +
                 "class ExampleController extends Controller {" +
                 '\n\tindex() {\n\t\tthis.res.send("Hello from Lightweight Framework!");\n\t}\n}\n\n' +
@@ -132,10 +132,19 @@ export function main(args: any): void {
 
         createFile(
             "./src/index.js",
-            'require("lightweight-framework").StartUp(__dirname);\n'
+            'require("@humansareweak/lightweight-framework").StartUp({\n\t' +
+                `path: __dirname,
+    name: process.env.PROJECT_NAME,
+    publicFolder: process.env.PUBLIC_FOLDER,
+    env: process.env.NODE_ENV,
+    port: process.env.PORT,` +
+                "\n});\n"
         );
 
-        createFile(".env", "PROJECT_NAME=Lightweight Framework\nPORT=4001");
+        createFile(
+            ".env",
+            "PROJECT_NAME=Lightweight Framework\nPUBLIC_FOLDER=public\nNODE_ENV=development\nPORT=4001"
+        );
 
         console.log(
             "\n" +
@@ -167,7 +176,7 @@ export function main(args: any): void {
 function createController(controllerName: string) {
     createFile(
         "./src/App/Http/Controllers/" + controllerName + ".js",
-        'const Controller = require("lightweight-framework").Controller;' +
+        'const Controller = require("@humansareweak/lightweight-framework").Controller;' +
             "\n\n" +
             "class " +
             controllerName +
