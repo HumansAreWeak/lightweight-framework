@@ -1,9 +1,10 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, Application } from "express";
 
 class Controller {
-    public req: Response | undefined;
+    public req: Request | undefined;
     public res: Response | undefined;
     public next: NextFunction | undefined;
+    public application: Application | undefined;
 }
 
 export default Controller;

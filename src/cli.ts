@@ -1,5 +1,3 @@
-import { create } from "domain";
-
 const chalk = require("chalk");
 const arg = require("arg");
 const fs = require("fs");

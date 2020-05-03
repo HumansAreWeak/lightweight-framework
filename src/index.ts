@@ -44,7 +44,7 @@ module.exports.StartUp = (params: StartUpInterface) => {
 
     app.get("*", (req: Request, res: Response) => {
         if (!res.headersSent) {
-            res.send(
+            res.status(404).send(
                 JSON.stringify({
                     status: 404,
                     message: "The page you are looking for was not found.",
